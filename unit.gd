@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if (not event.is_action_pressed("mouse_pressed")):
 		return
-	EventBus.emit_signal("unit_selected", self)
+	#EventBus.emit_signal("unit_selected", self)
 	
 func _change_color(unit : Unit):
 	pass

@@ -34,5 +34,9 @@ func select_unit(unit : Unit):
 	selected_unit = unit
 	
 func move_unit(tile : Tile):
+	if (tile.unit != null):
+		return
+	(selected_unit.get_parent() as Tile).unit = null
 	selected_unit.reparent(tile, false)
+	(selected_unit.get_parent() as Tile).unit = selected_unit
 	
