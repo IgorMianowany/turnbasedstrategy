@@ -1,7 +1,7 @@
 class_name Tile
 extends Node3D
 
-var creature : Creature
+var unit : Unit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func set_creature(_creature : Creature):
-	creature = _creature
+func set_unit(_unit : Unit):
+	unit = _unit
 	

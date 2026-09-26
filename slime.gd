@@ -1,13 +1,18 @@
 class_name Slime
-extends Creature
+extends Unit
 
+var is_blue = true
+@onready var mesh_instance : MeshInstance3D = $MeshInstance3D
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	super._ready()
+	mesh_instance.mesh.material.albedo_color = Color.BLUE
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _change_color(unit : Unit):
+	is_selected = unit == self
+	if is_selected:
+		mesh_instance.mesh.material.albedo_color = Color.RED
+		is_blue = false
+	else:
+		mesh_instance.mesh.material.albedo_color = Color.BLUE
+		is_blue = true

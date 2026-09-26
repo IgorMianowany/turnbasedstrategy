@@ -17,21 +17,21 @@ script = ExtResource("1_vx4y2")
 mesh = SubResource("PlaneMesh_vx4y2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.01, 0.5)
+transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.02, 0, 0.01, 0.5)
 mesh = SubResource("PlaneMesh_n3f48")
 surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.01, -0.5)
+transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.02, 0, 0.01, -0.5)
 mesh = SubResource("PlaneMesh_n3f48")
 surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(-2.1855694e-08, 0, -0.01, 0, 0.01, 0, 0.5, 0, -4.3711387e-10, 0.5, 0.01, 0)
+transform = Transform3D(-2.1855694e-08, 0, -0.02, 0, 0.01, 0, 0.5, 0, -8.7422775e-10, 0.5, 0.01, 0)
 mesh = SubResource("PlaneMesh_n3f48")
 surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(-2.1855694e-08, 0, -0.01, 0, 0.01, 0, 0.5, 0, -4.3711387e-10, -0.5, 0.01, 0)
+transform = Transform3D(-2.1855694e-08, 0, -0.02, 0, 0.01, 0, 0.5, 0, -8.7422775e-10, -0.5, 0.01, 0)
 mesh = SubResource("PlaneMesh_n3f48")
 surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")

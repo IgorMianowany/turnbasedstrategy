@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvn23g58ujsfa"]
 
-[ext_resource type="Script" uid="uid://dikm3l8cf4uyl" path="res://combat.gd" id="1_s0t75"]
+[ext_resource type="Script" uid="uid://c3beprqeuw2gi" path="res://combat_manager.gd" id="1_s0t75"]
 [ext_resource type="PackedScene" uid="uid://duh53gp55w5i3" path="res://tile.tscn" id="2_kx3u1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_raif2"]
