@@ -24,4 +24,4 @@ func build_field(tiles : Array[Tile], field_size : int):
 func get_distance_between_tiles(tile1 : Tile, tile2 : Tile) -> int:
 	var coords1 : Vector2 = field.find_key(tile1)
 	var coords2 : Vector2 = field.find_key(tile2)
-	return abs((coords1.x - coords2.x) + (coords1.y - coords2.y))
+	return abs((coords1.x - coords2.x)) + abs((coords1.y - coords2.y))
