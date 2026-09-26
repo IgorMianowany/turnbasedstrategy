@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://duh53gp55w5i3"]
+
+[ext_resource type="Script" uid="uid://rmrfc0r7pftm" path="res://tile.gd" id="1_vx4y2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vx4y2"]
+size = Vector2(1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n3f48"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx4y2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_vx4y2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_vx4y2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.01, 0.5)
+mesh = SubResource("PlaneMesh_n3f48")
+surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.01, -0.5)
+mesh = SubResource("PlaneMesh_n3f48")
+surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-2.1855694e-08, 0, -0.01, 0, 0.01, 0, 0.5, 0, -4.3711387e-10, 0.5, 0.01, 0)
+mesh = SubResource("PlaneMesh_n3f48")
+surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-2.1855694e-08, 0, -0.01, 0, 0.01, 0, 0.5, 0, -4.3711387e-10, -0.5, 0.01, 0)
+mesh = SubResource("PlaneMesh_n3f48")
+surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
