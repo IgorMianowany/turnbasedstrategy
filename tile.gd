@@ -36,3 +36,13 @@ func _on_area_3d_mouse_exited() -> void:
 	#if (not can_move_to()):
 		#return
 	mesh.material.albedo_color = Color.WHITE
+	
+func color(_color = null):
+	if _color == null:
+		pass
+		#mesh.material.albedo_color = Color.WHITE
+	else:
+		mesh.material.albedo_color = _color
+	
+
+	
