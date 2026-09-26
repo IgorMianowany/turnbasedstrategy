@@ -15,3 +15,9 @@ func _process(delta: float) -> void:
 func set_unit(_unit : Unit):
 	unit = _unit
 	
+
+
+func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if (not event.is_action_pressed("mouse_pressed")):
+		return
+	EventBus.tile_clicked.emit(self)
