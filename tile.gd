@@ -1,6 +1,10 @@
 class_name Tile
 extends Node3D
 
+var is_showing_range : bool = false
+var is_showing_selection : bool = false
+
+
 var unit : Unit
 @onready var mesh : Mesh = $MeshInstance3D.mesh
 
@@ -10,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	color()
 	
 func set_unit(_unit : Unit):
 	unit = _unit
@@ -27,7 +31,8 @@ func can_move_to() -> bool:
 func _on_area_3d_mouse_entered() -> void:
 	if (not can_move_to()):
 		return
-	mesh.material.albedo_color = Color.GREEN
+	is_showing_selection = true
+	#mesh.material.albedo_color = Color.GREEN
 
 func _on_area_3d_mouse_exited() -> void:
 	"""
@@ -35,14 +40,25 @@ func _on_area_3d_mouse_exited() -> void:
 	"""
 	#if (not can_move_to()):
 		#return
-	mesh.material.albedo_color = Color.WHITE
+	is_showing_selection = false
+
+	#mesh.material.albedo_color = Color.WHITE
 	
 func color(_color = null):
-	if _color == null:
-		pass
-		#mesh.material.albedo_color = Color.WHITE
-	else:
-		mesh.material.albedo_color = _color
+	if is_showing_selection:
+		mesh.material.albedo_color = Color.GREEN
+		return
+	if is_showing_range:
+		mesh.material.albedo_color = Color.GREEN_YELLOW
+		return
+	mesh.material.albedo_color = Color.WHITE
+		
+		
+	#if _color == null:
+		#pass
+		##mesh.material.albedo_color = Color.WHITE
+	#else:
+		#mesh.material.albedo_color = _color
 	
 
 	

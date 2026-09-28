@@ -45,6 +45,8 @@ func move_unit(target_tile : Tile):
 	current_tile.unit = null
 	selected_unit.reparent(target_tile, false)
 	target_tile.unit = selected_unit
+	target_tile.is_showing_selection = false
+	color_move_range()
 	
 func color_move_range():
 	var starting_tile = selected_unit.get_parent()
@@ -52,7 +54,9 @@ func color_move_range():
 	for tile in tiles:
 		distance = combat_movement.get_distance_between_tiles(starting_tile, tile)
 		if (distance <= selected_unit.speed and tile.can_move_to()):
-			tile.color(Color.GREEN_YELLOW)
+			#tile.color(Color.GREEN_YELLOW)
+			tile.is_showing_range = true
 		else:
-			tile.color()
+			tile.is_showing_range = false
+			#tile.color()
 			
