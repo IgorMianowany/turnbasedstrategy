@@ -40,6 +40,8 @@ func _process(_delta: float) -> void:
 	pass
 
 func select_unit(unit : Unit):
+	if selected_unit != null:
+		selected_unit.is_selected = false
 	unit.is_selected = true
 	selected_unit = unit
 	color_move_range()
@@ -57,8 +59,9 @@ func move_unit(target_tile : Tile):
 	
 	if (action_queue.is_empty()):
 		action_queue = initiative_queue.duplicate()
+	selected_unit.is_selected = false
 	selected_unit = action_queue.pop_front()
-
+	selected_unit.is_selected = true
 	
 	color_move_range()
 	

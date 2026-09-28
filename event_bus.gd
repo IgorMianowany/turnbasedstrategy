@@ -3,8 +3,8 @@ extends Node
 signal unit_selected
 signal tile_clicked
 
+var counter : int = 0 : get = get_counter
 
-var time : float = 0
-
-func _process(delta: float) -> void:
-	time += delta
+func get_counter() -> int:
+	counter += 1
+	return counter

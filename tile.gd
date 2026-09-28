@@ -44,6 +44,9 @@ func _on_area_3d_mouse_exited() -> void:
 	#mesh.material.albedo_color = Color.WHITE
 	
 func color(_color = null):
+	if unit != null and unit.is_selected:
+		mesh.material.albedo_color = Color.YELLOW
+		return
 	if is_showing_selection and not is_showing_range:
 		mesh.material.albedo_color = Color.DIM_GRAY
 		return
