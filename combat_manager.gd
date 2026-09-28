@@ -38,7 +38,7 @@ func select_unit(unit : Unit):
 	
 	
 func move_unit(target_tile : Tile):
-	if (not target_tile.can_move_to()):
+	if (not target_tile.can_move_to() or not target_tile.is_showing_range):
 		return
 	var current_tile = selected_unit.get_parent()
 	

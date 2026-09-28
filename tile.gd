@@ -4,7 +4,6 @@ extends Node3D
 var is_showing_range : bool = false
 var is_showing_selection : bool = false
 
-
 var unit : Unit
 @onready var mesh : Mesh = $MeshInstance3D.mesh
 
@@ -45,6 +44,9 @@ func _on_area_3d_mouse_exited() -> void:
 	#mesh.material.albedo_color = Color.WHITE
 	
 func color(_color = null):
+	if is_showing_selection and not is_showing_range:
+		mesh.material.albedo_color = Color.DIM_GRAY
+		return
 	if is_showing_selection:
 		mesh.material.albedo_color = Color.GREEN
 		return
