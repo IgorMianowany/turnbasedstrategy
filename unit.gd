@@ -12,11 +12,6 @@ func _ready() -> void:
 	unit_name = "Unit" + str(EventBus.counter)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if is_selected:
-		print(unit_name)
-
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if (not event.is_action_pressed("mouse_pressed")):
 		return
