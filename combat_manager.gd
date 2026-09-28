@@ -5,6 +5,9 @@ var tiles : Array[Tile]
 var slime_scene := preload("res://slime.tscn")
 var selected_unit : Unit
 
+var action_queue : Array[Unit] = []
+var initiative_queue : Array[Unit] = []
+
 @onready var combat_movement = CombatMovementHelper.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -17,15 +20,20 @@ func _ready() -> void:
 	
 	
 	var counter = 0
+	var unit : Unit
 	for tile in tiles:
 		if counter > 9:
 			break
 		if counter % 2 == 0:
 			tile.unit = slime_scene.instantiate()
 			tile.add_child(tile.unit)
+			action_queue.append(tile.unit)
+			initiative_queue.append(tile.unit)
 			if (selected_unit == null):
 				EventBus.unit_selected.emit(tile.unit)
+				action_queue.erase(tile.unit)
 		counter += 1
+		
 
 func _process(_delta: float) -> void:
 	#color_move_range()
@@ -46,7 +54,14 @@ func move_unit(target_tile : Tile):
 	selected_unit.reparent(target_tile, false)
 	target_tile.unit = selected_unit
 	target_tile.is_showing_selection = false
+	
+	if (action_queue.is_empty()):
+		action_queue = initiative_queue.duplicate()
+	selected_unit = action_queue.pop_front()
+
+	
 	color_move_range()
+	
 	
 func color_move_range():
 	var starting_tile = selected_unit.get_parent()

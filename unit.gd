@@ -4,10 +4,12 @@ extends Node3D
 var area : Area3D
 var is_selected : bool = false
 var speed : int = 3
+var unit_name : String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.connect("unit_selected", _change_color)
+	unit_name = "Unit" + str(EventBus.time)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
