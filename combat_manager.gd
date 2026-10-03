@@ -56,7 +56,6 @@ func move_unit(target_tile : Tile):
 	selected_unit.reparent(target_tile, false)
 	target_tile.unit = selected_unit
 	target_tile.is_showing_selection = false
-	selected_unit.health -= randi_range(0,5)
 	
 	if (action_queue.is_empty()):
 		action_queue = initiative_queue.duplicate()
