@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://by0gl76s1xsup"]
+[gd_scene load_steps=7 format=3 uid="uid://by0gl76s1xsup"]
 
 [ext_resource type="PackedScene" uid="uid://ccuyxgrd2fydm" path="res://unit.tscn" id="1_5jc4t"]
 [ext_resource type="Script" uid="uid://d16nurcr114ym" path="res://slime.gd" id="2_4l1t8"]
@@ -14,6 +14,9 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jc4t"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_5jc4t"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
 [node name="Slime" instance=ExtResource("1_5jc4t")]
 script = ExtResource("2_4l1t8")
 
@@ -24,3 +27,7 @@ mesh = SubResource("BoxMesh_5jc4t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.256087, 0)
 shape = SubResource("BoxShape3D_5jc4t")
+
+[node name="Sprite3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11244205, 0.38207355)
+texture = SubResource("ViewportTexture_5jc4t")

@@ -1,11 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccuyxgrd2fydm"]
+[gd_scene load_steps=5 format=3 uid="uid://ccuyxgrd2fydm"]
 
 [ext_resource type="Script" uid="uid://dciqt5fww57q1" path="res://unit.gd" id="1_btf8p"]
+[ext_resource type="Texture2D" uid="uid://b253oc72kvkxe" path="res://barHorizontal_red_mid 200.png" id="2_ctwoc"]
+[ext_resource type="Texture2D" uid="uid://djv8arw5wriy1" path="res://barHorizontal_green_mid 200.png" id="3_davkp"]
+
+[sub_resource type="Theme" id="Theme_btf8p"]
 
 [node name="Unit" type="Node3D"]
 script = ExtResource("1_btf8p")
 
 [node name="Area3D" type="Area3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.001
+billboard = 1
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+scaling_3d_mode = 2
+gui_disable_input = true
+size = Vector2i(450, 300)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -125.5
+offset_right = 225.0
+offset_bottom = 125.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Sprite3D/SubViewport/VBoxContainer"]
+layout_mode = 2
+
+[node name="Healthbar" type="TextureProgressBar" parent="Sprite3D/SubViewport/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 2
+value = 75.0
+rounded = true
+nine_patch_stretch = true
+texture_under = ExtResource("2_ctwoc")
+texture_progress = ExtResource("3_davkp")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Sprite3D/SubViewport/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Sprite3D/SubViewport/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_btf8p")
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 150
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]

@@ -5,11 +5,21 @@ var area : Area3D
 var is_selected : bool = false
 var speed : int = 3
 var unit_name : String = ""
+var health : int = 1 : get = get_health
+
+
+@onready var healthbar : TextureProgressBar = $Sprite3D/SubViewport/VBoxContainer/MarginContainer/Healthbar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Sprite3D.texture = $Sprite3D/SubViewport.get_texture()
 	EventBus.connect("unit_selected", _change_color)
 	unit_name = "Unit" + str(EventBus.counter)
+	healthbar.max_value = health
+	
+	
+func _process(delta: float) -> void:
+	healthbar.value = health
 
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -19,3 +29,10 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 	
 func _change_color(unit : Unit):
 	pass
+	
+func get_health() -> int:
+	return health
+	
+	
+func set_health(_health : int):
+	health = _health
