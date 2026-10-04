@@ -11,8 +11,8 @@ func _ready() -> void:
 	super._ready()
 	mesh_instance.mesh.material.albedo_color = Color.BLUE
 
-func _change_color(unit : Unit):
-	is_selected = unit == self
+func _change_color(_unit : Unit):
+	#is_selected = unit == self
 	if is_selected:
 		mesh_instance.mesh.material.albedo_color = Color.RED
 		is_blue = false
