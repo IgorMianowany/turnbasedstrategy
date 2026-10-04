@@ -57,14 +57,29 @@ func move_unit(target_tile : Tile):
 	target_tile.unit = selected_unit
 	target_tile.is_showing_selection = false
 	
+	selected_unit.take_damage(randi_range(0,10))
+	
+
+		
 	if (action_queue.is_empty()):
-		action_queue = initiative_queue.duplicate()
-	selected_unit.is_selected = false
-	selected_unit = action_queue.pop_front()
-	selected_unit.is_selected = true
+			action_queue = initiative_queue.duplicate()
+	while(not action_queue.is_empty()):
+		selected_unit.is_selected = false
+		selected_unit = action_queue.pop_front()
+		if(selected_unit != null and not selected_unit.is_dead):
+			selected_unit.is_selected = true
+			break
+
+			
+	if (initiative_queue.find_custom(_filter_dead_units.bind()) == -1):
+		get_tree().quit()
+		
 	
 	color_move_range()
 	
+func _filter_dead_units(unit : Unit) -> bool:
+	print(not unit.is_dead and unit.health > 0)
+	return not unit.is_dead and unit.health > 0
 	
 func color_move_range():
 	var starting_tile = selected_unit.get_parent()

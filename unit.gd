@@ -6,6 +6,7 @@ var is_selected : bool = false
 var speed : int = 3
 var unit_name : String = ""
 var health : int = 1 : get = get_health
+var is_dead : bool = false
 
 
 @onready var healthbar : TextureProgressBar = $Sprite3D/SubViewport/VBoxContainer/MarginContainer/Healthbar
@@ -36,3 +37,8 @@ func get_health() -> int:
 	
 func set_health(_health : int):
 	health = _health
+	
+func take_damage(_damage : int):
+	health -= _damage
+	if health <= 0:
+		is_dead = true
