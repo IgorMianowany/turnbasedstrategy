@@ -78,7 +78,6 @@ func move_unit(target_tile : Tile):
 	color_move_range()
 	
 func _filter_dead_units(unit : Unit) -> bool:
-	print(not unit.is_dead and unit.health > 0)
 	return not unit.is_dead and unit.health > 0
 	
 func color_move_range():
