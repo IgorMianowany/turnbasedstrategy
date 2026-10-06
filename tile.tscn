@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://duh53gp55w5i3"]
+[gd_scene load_steps=8 format=3 uid="uid://duh53gp55w5i3"]
 
 [ext_resource type="Script" uid="uid://rmrfc0r7pftm" path="res://tile.gd" id="1_vx4y2"]
 
@@ -17,6 +17,9 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n3f48"]
 points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vx4y2"]
+points = PackedVector3Array(0, 0, 0, 0.5, 0, -0.5, 0.5, 0, 0.5)
 
 [node name="Tile" type="Node3D"]
 script = ExtResource("1_vx4y2")
@@ -45,10 +48,55 @@ mesh = SubResource("PlaneMesh_n3f48")
 surface_material_override/0 = SubResource("StandardMaterial3D_vx4y2")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+process_mode = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_n3f48")
 
+[node name="Right" type="Area3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015403867, 0)
+shape = SubResource("ConvexPolygonShape3D_vx4y2")
+debug_color = Color(0.9625445, 3.1766297e-06, 0.5067573, 0.41960785)
+
+[node name="Left" type="Area3D" parent="MeshInstance3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.031, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015403867, 0)
+shape = SubResource("ConvexPolygonShape3D_vx4y2")
+debug_color = Color(0.9625445, 3.1766297e-06, 0.5067573, 0.41960785)
+
+[node name="Up" type="Area3D" parent="MeshInstance3D"]
+transform = Transform3D(4.371139e-08, 0, 1, 0, -1, 0, -1, 0, 4.371139e-08, 0, 0.030562699, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015403867, 0)
+shape = SubResource("ConvexPolygonShape3D_vx4y2")
+debug_color = Color(0.9625445, 3.1766297e-06, 0.5067573, 0.41960785)
+
+[node name="Down" type="Area3D" parent="MeshInstance3D"]
+transform = Transform3D(4.371139e-08, 0, -1, 0, -1, 0, 1, 0, 4.371139e-08, 0, 0.030562699, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Down"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015403867, 0)
+shape = SubResource("ConvexPolygonShape3D_vx4y2")
+debug_color = Color(0.9625445, 3.1766297e-06, 0.5067573, 0.41960785)
+
 [connection signal="input_event" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_entered"]
 [connection signal="mouse_exited" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_exited"]
+[connection signal="input_event" from="MeshInstance3D/Right" to="." method="_on_right_input_event"]
+[connection signal="mouse_entered" from="MeshInstance3D/Right" to="." method="_on_right_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/Right" to="." method="_on_right_mouse_exited"]
+[connection signal="input_event" from="MeshInstance3D/Left" to="." method="_on_left_input_event"]
+[connection signal="mouse_entered" from="MeshInstance3D/Left" to="." method="_on_left_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/Left" to="." method="_on_left_mouse_exited"]
+[connection signal="input_event" from="MeshInstance3D/Up" to="." method="_on_up_input_event"]
+[connection signal="mouse_entered" from="MeshInstance3D/Up" to="." method="_on_up_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/Up" to="." method="_on_up_mouse_exited"]
+[connection signal="input_event" from="MeshInstance3D/Down" to="." method="_on_down_input_event"]
+[connection signal="mouse_entered" from="MeshInstance3D/Down" to="." method="_on_down_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/Down" to="." method="_on_down_mouse_exited"]

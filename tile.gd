@@ -64,6 +64,61 @@ func color(_color = null):
 		##mesh.material.albedo_color = Color.WHITE
 	#else:
 		#mesh.material.albedo_color = _color
+		
+		
+		
+
 	
 
 	
+
+
+func _on_right_mouse_entered() -> void:
+	#if unit != null:
+	EventBus.attack_action_selected.emit(EventBus.DIRECTION.RIGHT, self)
+	_on_area_3d_mouse_entered()
+	
+func _on_right_mouse_exited() -> void:
+	#print("right exited")
+	_on_area_3d_mouse_exited()
+
+
+func _on_left_mouse_entered() -> void:
+	#if unit != null:
+	EventBus.attack_action_selected.emit(EventBus.DIRECTION.LEFT, self)
+	_on_area_3d_mouse_entered()
+
+func _on_left_mouse_exited() -> void:
+	_on_area_3d_mouse_exited()
+
+
+func _on_up_mouse_entered() -> void:
+	#if unit != null:
+	EventBus.attack_action_selected.emit(EventBus.DIRECTION.UP, self)
+	_on_area_3d_mouse_entered()
+
+func _on_up_mouse_exited() -> void:
+	_on_area_3d_mouse_exited()
+
+func _on_down_mouse_entered() -> void:
+	#if unit != null:
+	EventBus.attack_action_selected.emit(EventBus.DIRECTION.DOWN, self)
+	_on_area_3d_mouse_entered()
+
+func _on_down_mouse_exited() -> void:
+	_on_area_3d_mouse_exited()
+
+
+func _on_right_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	_on_area_3d_input_event(camera, event, event_position, normal, shape_idx)
+
+func _on_left_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	_on_area_3d_input_event(camera, event, event_position, normal, shape_idx)
+
+
+func _on_up_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	_on_area_3d_input_event(camera, event, event_position, normal, shape_idx)
+
+
+func _on_down_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	_on_area_3d_input_event(camera, event, event_position, normal, shape_idx)

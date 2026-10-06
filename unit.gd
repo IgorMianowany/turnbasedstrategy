@@ -50,10 +50,11 @@ func take_damage(_damage : int):
 
 
 func _on_area_3d_mouse_entered() -> void:
-	if is_selected == true:
-		return
-	is_hovered = true
-	EventBus.not_selected_unit_hovered.emit(self)
+	pass
+	#if is_selected == true:
+		#return
+	#is_hovered = true
+	#EventBus.not_selected_unit_hovered.emit(self)
 
 
 func _on_area_3d_mouse_exited() -> void:
